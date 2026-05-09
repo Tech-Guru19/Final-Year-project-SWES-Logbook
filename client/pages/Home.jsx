@@ -13,7 +13,7 @@ const Home = () => {
             </div>
             <span>SIWES Logbook</span>
           </div>
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <a
               className="font-inter text-sm font-medium tracking-tight text-primary border-b-2 border-primary pb-1 transition-all duration-200"
               href="#"
@@ -22,19 +22,31 @@ const Home = () => {
             </a>
             <a
               className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-primary transition-all duration-200"
-              href="#"
+              href="School"
             >
               For Schools
             </a>
             <a
               className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-primary transition-all duration-200"
-              href="student-dashboard"
+              href="student-Login"
             >
               For Students
             </a>
             <a
               className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-primary transition-all duration-200"
-              href="#"
+              href="Supervisor-Login"
+            >
+              For Supervisor
+            </a>
+            <a
+              className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-primary transition-all duration-200"
+              href="Coordinator-Login"
+            >
+              For Coordinator
+            </a>
+            <a
+              className="font-inter text-sm font-medium tracking-tight text-on-surface-variant hover:text-primary transition-all duration-200"
+              href="Support"
             >
               Support
             </a>

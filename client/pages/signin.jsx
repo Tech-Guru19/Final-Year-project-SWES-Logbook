@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import backIcon from "../Images/arrows.png"
 
 const signin = () => {
   return (

@@ -225,7 +225,7 @@ const signup = () => {
       </main>
       <footer className="w-full py-8 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
         <div className="flex flex-col md:flex-row justify-between items-center px-8 gap-4">
-          <span className="font-bold text-slate-700">SIWES Tracker</span>
+          <span className="font-bold text-slate-700">SIWES Logbook</span>
           <p className="text-xs font-normal text-slate-500 dark:text-slate-400">
             © 2026 SIWES Logbook Management System. All academic rights
             reserved.
