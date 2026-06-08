@@ -472,7 +472,7 @@ const Home = () => {
             </div>
           </div>
           <div className="pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] text-on-surface-variant/70">
-            <p>© 2024 SIWES Logbook Tracking System. All rights reserved.</p>
+            <p>© 2026 SIWES Logbook Tracking System. All rights reserved.</p>
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-secondary text-sm">
                 verified_user

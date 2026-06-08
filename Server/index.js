@@ -6,12 +6,13 @@ const connectSql = require("./sql.js")
 app.use(cors());
 app.use(express.json());
 const signup = require("./Module/Auth/Signup.js")
-const signin = require("./Module/Auth/Signin.js")
+const signin = require("./Module/Auth/Signin.js");
+const mailUser = require("./Module/Auth/Mailer.js");
 
 // require('dotenv').config();
 let connection
 connectSql()
-.then((output)=>{
+.then(async(output)=>{
     connection = output
     console.log("database is running");
     
@@ -37,3 +38,4 @@ app.listen(serverPort, () => {
     console.log(`lift off !!! server is running at ${serverPort}`);
 
 })
+

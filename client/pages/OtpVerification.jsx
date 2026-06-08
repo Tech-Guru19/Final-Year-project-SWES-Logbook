@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const OtpVerification = () => {
+  const location = useLocation()
+  const [otp, setOpt] = useState("")
+  useEffect(() => {
+    console.log(location);
+    
+  }, [])
+
   return (
     <>
-      <body className="font-body-md text-on-surface min-h-screen flex flex-col">
+      <div className="font-body-md text-on-surface min-h-screen flex flex-col">
         <header className="fixed top-0 w-full border-b bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 flex justify-between items-center px-6 h-16 w-full z-50">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold text-blue-900 dark:text-blue-100 font-h2">
@@ -43,45 +51,15 @@ const OtpVerification = () => {
               </div>
               <form className="space-y-xl">
                 <div
-                  className="flex justify-between gap-2 md:gap-3"
+                  className="flex justify-between gap-2 md:gap-3 border border-2 border-primary"
                   id="otp-container"
                 >
-                  <input
-                    className="w-12 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
-                    maxlength={1}
-                    placeholder="•"
-                    type="text"
-                  />
-                  <input
-                    className="w-12 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
-                    maxlength={1}
-                    placeholder="•"
-                    type="text"
-                  />
-                  <input
-                    className="w-12 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
-                    maxlength="1"
-                    placeholder="•"
-                    type="text"
-                  />
-                  <input
-                    className="w-12 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
-                    maxlength="1"
-                    placeholder="•"
-                    type="text"
-                  />
-                  <input
-                    className="w-12 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
-                    maxlength={1}
-                    placeholder="•"
-                    type="text"
-                  />
-                  <input
-                    className="w-12 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
-                    maxlength="1"
-                    placeholder="•"
-                    type="text"
-                  />
+                  <input style={{width:"100%"}} value={otp} onChange={(e)=>{setOpt(e.target.value)}}
+                    className="w-100 h-14 md:w-14 md:h-16 text-center text-h2 font-h2 border border-outline rounded bg-white focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none"
+                    maxLength="4"
+                    placeholder="••••"
+                    type="number"
+                  /> 
                 </div>
                 <button
                   className="w-full h-[40px] bg-primary-container text-white font-label-md text-label-md rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center uppercase tracking-wider"
@@ -163,7 +141,7 @@ const OtpVerification = () => {
             </a>
           </div>
         </footer>
-      </body>
+      </div>
     </>
   );
 };

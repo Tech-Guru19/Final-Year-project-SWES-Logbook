@@ -3,7 +3,6 @@ const getRandom = () => {
     for (let index = 0; index < 4; index++) {
         const random = Math.floor(Math.random() * 9)
         randomValue += String(random)
-        console.log(randomValue);
     }
     return randomValue
 }

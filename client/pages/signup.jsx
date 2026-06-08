@@ -1,45 +1,56 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const signup = () => {
-  const [emailAdress, setEmailAdress] = useState("")
-  const [fullName, setFullName] = useState("")
-  const [Matriculation_No, setMatriculation_No] = useState("")
-  const [Instituition_Mail, setInstituition_Mail] = useState("")
-  const [department, setDepartment] = useState("")
-  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+  const [emailAdress, setEmailAdress] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [Matriculation_No, setMatriculation_No] = useState("");
+  const [Instituition_Mail, setInstituition_Mail] = useState("");
+  const [department, setDepartment] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const signUp = () =>{
-    axios.post("http://localhost:5687/auth/signup",{
-      emailAdress,
-      fullName,
-      Matriculation_No,
-      Instituition_Mail,
-      department,
-      password
-    })
-    .then((data)=>{
-      console.log(data?.data?.message);
-      
-    })
-    .catch((err)=>{
-      console.log(err.response);
-      
-    })
-  }
+  const signUp = () => {
+    setLoading(true)
+    axios
+      .post("http://localhost:5687/auth/signup", {
+        emailAdress,
+        fullName,
+        Matriculation_No,
+        Instituition_Mail,
+        department,
+        password,
+      })
+      .then((data) => {
+        console.log(data?.data?.message);
+        navigate("/OTP-Verification", {
+          state: {
+            mail: emailAdress,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(()=>{
+        setLoading(false)
+      })
+  };
   return (
-    <>Instituition_Mail
+    <>
+      Instituition_Mail
       <header className="fixed top-0 w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 z-50">
         <div className="flex justify-between items-center px-6 h-16 w-full">
           <div className="text-xl font-bold text-blue-900 dark:text-blue-100 font-h2">
             SIWES Logbook
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/" >
-            <button className="bg-primary text-white font-inter text-sm font-medium tracking-tight px-6 py-2 rounded-lg hover:opacity-90 transition-all duration-200 ease-in-out">
-              Back
-            </button>
+            <Link to="/">
+              <button className="bg-primary text-white font-inter text-sm font-medium tracking-tight px-6 py-2 rounded-lg hover:opacity-90 transition-all duration-200 ease-in-out">
+                Back
+              </button>
             </Link>
             <span className="font-inter text-sm font-medium text-slate-600 dark:text-slate-400">
               Help
@@ -87,7 +98,10 @@ const signup = () => {
                     Full Name
                   </label>
                   <input
-                    value={fullName} onChange={(e)=>{setFullName(e.target.value)}}
+                    value={fullName}
+                    onChange={(e) => {
+                      setFullName(e.target.value);
+                    }}
                     className="w-full h-[40px] px-md border border-outline focus:border-2 focus:border-primary outline-none transition-all rounded-lg bg-surface-bright"
                     id="full_name"
                     placeholder="John Doe"
@@ -102,7 +116,10 @@ const signup = () => {
                     Email Address
                   </label>
                   <input
-                    value={emailAdress} onChange={(e)=>{setEmailAdress(e.target.value)}}
+                    value={emailAdress}
+                    onChange={(e) => {
+                      setEmailAdress(e.target.value);
+                    }}
                     className="w-full h-[40px] px-md border border-outline focus:border-2 focus:border-primary outline-none transition-all rounded-lg bg-surface-bright"
                     id="full_name"
                     placeholder="John Doe"
@@ -117,7 +134,10 @@ const signup = () => {
                     Matriculation Number
                   </label>
                   <input
-                    value={Matriculation_No} onChange={(e)=>{setMatriculation_No(e.target.value)}}
+                    value={Matriculation_No}
+                    onChange={(e) => {
+                      setMatriculation_No(e.target.value);
+                    }}
                     className="w-full h-[40px] px-md border border-outline focus:border-2 focus:border-primary outline-none transition-all rounded-lg bg-surface-bright"
                     id="matric_no"
                     placeholder="U2018/1234567"
@@ -132,7 +152,9 @@ const signup = () => {
                     Department
                   </label>
                   <select
-                    onChange={(e)=>{setDepartment(e.target.value)}}
+                    onChange={(e) => {
+                      setDepartment(e.target.value);
+                    }}
                     className="w-full h-[40px] px-md border border-outline focus:border-2 focus:border-primary outline-none transition-all rounded-lg bg-surface-bright appearance-none"
                     id="department"
                   >
@@ -155,7 +177,10 @@ const signup = () => {
                   </label>
                   <div className="relative">
                     <input
-                    value={Instituition_Mail} onChange={(e)=>{setInstituition_Mail(e.target.value)}}
+                      value={Instituition_Mail}
+                      onChange={(e) => {
+                        setInstituition_Mail(e.target.value);
+                      }}
                       className="w-full h-[40px] pl-md pr-xl border border-outline focus:border-2 focus:border-primary outline-none transition-all rounded-lg bg-surface-bright"
                       id="email"
                       placeholder="j.doe@university.edu.ng"
@@ -178,7 +203,10 @@ const signup = () => {
                   </label>
                   <div className="relative">
                     <input
-                    value={password} onChange={(e)=>{setPassword(e.target.value)}}
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
                       className="w-full h-[40px] pl-md pr-xl border border-outline focus:border-2 focus:border-primary outline-none transition-all rounded-lg bg-surface-bright"
                       id="password"
                       placeholder="••••••••"
@@ -197,15 +225,37 @@ const signup = () => {
                 </div>
                 <button
                   className="w-full h-[40px] bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 active:scale-[0.98] transition-all mt-lg flex items-center justify-center gap-sm"
-                  onClick={signUp}
+                  onClick={loading ? null : signUp}
                 >
-                  Sign Up
-                  <span
-                    className="material-symbols-outlined text-[18px]"
-                    data-icon="arrow_forward"
-                  >
-                    arrow_forward
-                  </span>
+                  {loading? null : "sign up"}
+                  {loading ? (
+                    <div role="status">
+                      <svg
+                        aria-hidden="true"
+                        class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand"
+                        viewBox="0 0 100 101"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                          fill="currentFill"
+                        />
+                      </svg>
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  ) : (
+                    <span
+                      className="material-symbols-outlined text-[18px]"
+                      data-icon="arrow_forward"
+                    >
+                      arrow_forward
+                    </span>
+                  )}
                 </button>
               </div>
               <div className="mt-xl pt-lg border-t border-outline-variant text-center">

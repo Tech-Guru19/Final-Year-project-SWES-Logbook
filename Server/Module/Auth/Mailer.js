@@ -5,17 +5,21 @@ emailjs.init({
     privateKey: 'buIjBrbcfRf3AqhwPUnAB',
 })
 
-const mailUser = (email) =>{
-    const randomValue = allBasic.getRandom()
-    emailjs.send('service_d4x9phq', 'template_irryds5', {
-        email: "israeladekola8@gmail.com",
+const mailUser = async(email) =>{
+    const randomValue = await allBasic.getRandom()
+    emailjs.send('service_rql13fa', 'template_irryds5', {
+        email: email,
         OTP: randomValue
     })
-    .then((response) => {
+    .then(async(response) => {
         console.log('SUCCESS!', response.status, response.text);
+        console.log("here");
     })
     .catch((err) => {
         console.log('FAILED...', err);
-    });
+        return({error: "Error sending OTP"})
+    })
+    return randomValue
+
 }
 module.exports = mailUser

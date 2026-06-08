@@ -27,7 +27,15 @@ const signup = async(req, res)=>{
     const values = [fullName, email, Matriculation_No, randomValue, Instituition_Mail, department, password]
     try {
         const [result] = await connection.execute(command, values)
-        mailer(email)
+        const sendOTP = await mailer(email)
+        if (sendOTP?.error) {
+            res.status(400).json({message: sendOTP?.error})
+        }
+        console.log("omoh",sendOTP);
+        
+        const saveUserOTPCommand = ('INSERT INTO OTP_Verication_Table (email_address, OTP_Code) VALUES  (?,?)')
+        const value = [email, sendOTP]
+        const executeMail = await connection.execute(saveUserOTPCommand, value)
         res.status(201).json({message: "Account created successfully, please check your mail to confirm"})
         console.log(result);
         
