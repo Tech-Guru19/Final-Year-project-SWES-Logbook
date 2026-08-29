@@ -1,19 +1,21 @@
-# 🎓 Final Year Project — SWES Logbook
+# Final Year Project - SWES Logbook
 
-The **final year project** version of the SWES/SIWES logbook tracking system — the academic foundation for the full SIWES Logbook platform.
+## Overview
 
-## ✨ Features
+The final year project version of the SWES/SIWES logbook tracking system, forming the academic foundation for the full SIWES Logbook platform.
 
-- 📝 **Logbook tracking** — structured record of industrial training
-- 📊 **Progress monitoring** — performance tracking for students
-- 🧱 **Full-stack JavaScript** — React + Node
+## Key Features
 
-## 🧱 Tech Stack
+- **Logbook tracking:** Structured recording of industrial training activities
+- **Progress monitoring:** Performance tracking for students
+- **Full-stack JavaScript:** React and Node.js
 
-- JavaScript (React + Node.js)
+## Technology Stack
+
+- JavaScript (React and Node.js)
 - Vite
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 git clone https://github.com/Tech-Guru19/Final-Year-project-SWES-Logbook.git
@@ -22,6 +24,6 @@ npm install
 npm run dev
 ```
 
-## 👩‍💻 Author
+## Author
 
-**[Obiasogu Esther Chizaram](https://github.com/Tech-Guru19)**
+[Obiasogu Esther Chizaram](https://github.com/Tech-Guru19)
